@@ -73,7 +73,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_is_additive_number() {
+    fn test_pick() {
         let s = Solution::new(vec!(1,2,3,3,3));
         assert_eq!(s.pick(2), 1)
     }
