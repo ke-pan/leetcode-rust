@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 
 mod n306_additive_number;
+mod n386_lexicographical_numbers;
 mod n390_elimination_game;
 mod n393_utf_8_validation;
 mod n394_decode_string;
