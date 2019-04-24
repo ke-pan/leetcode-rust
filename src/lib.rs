@@ -2,6 +2,7 @@
 
 mod n306_additive_number;
 mod n373_find_k_pairs_with_smallest_sums;
+mod n375_guess_number_higher_or_lower_ii;
 mod n378_kth_smallest_element_in_a_sorted_matrix;
 mod n382_linked_list_random_node;
 mod n385_mini_parser;
