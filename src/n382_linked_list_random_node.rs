@@ -53,13 +53,13 @@ struct Solution {
 
 use rand::Rng;
 impl Solution {
-  /** @param head The linked list's head.
-  Note that the head is guaranteed to be not null, so it contains at least one node. */
+    /** @param head The linked list's head.
+    Note that the head is guaranteed to be not null, so it contains at least one node. */
     fn new(head: Option<Box<ListNode>>) -> Self {
-        Solution { head: head }
+        Solution { head }
     }
 
-  /** Returns a random node's value. */
+    /** Returns a random node's value. */
     fn get_random(&self) -> i32 {
         let mut head = &self.head;
         let mut res: i32 = 0;
@@ -68,7 +68,7 @@ impl Solution {
             if let Some(b) = head {
                 let pick = rand::thread_rng().gen_ratio(1, cnt);
                 if pick {
-                  res = b.val;
+                    res = b.val;
                 }
                 cnt += 1;
                 head = &(b.next);

@@ -13,32 +13,32 @@
  *
  * Given a n x n matrix where each of the rows and columns are sorted in
  * ascending order, find the kth smallest element in the matrix.
- * 
- * 
+ *
+ *
  * Note that it is the kth smallest element in the sorted order, not the kth
  * distinct element.
- * 
- * 
+ *
+ *
  * Example:
- * 
+ *
  * matrix = [
  * ⁠  [ 1,  5,  9],
  * ⁠  [10, 11, 13],
  * ⁠  [12, 13, 15]
  * ],
  * k = 8,
- * 
+ *
  * return 13.
- * 
- * 
- * 
- * Note: 
+ *
+ *
+ *
+ * Note:
  * You may assume k is always valid, 1 ≤ k ≤ n^2.
  */
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 
-struct Solution{}
+struct Solution {}
 
 impl Solution {
     pub fn kth_smallest(matrix: Vec<Vec<i32>>, k: i32) -> i32 {
@@ -46,19 +46,19 @@ impl Solution {
         for j in 0..matrix[0].len() {
             pq.push(Tuple::new(0, j, matrix[0][j]));
         }
-        for _ in 0..k-1 {
+        for _ in 0..k - 1 {
             let t = pq.pop().unwrap();
             if t.x == matrix.len() - 1 {
                 continue;
             }
-            pq.push(Tuple::new(t.x+1, t.y, matrix[t.x+1][t.y]));
+            pq.push(Tuple::new(t.x + 1, t.y, matrix[t.x + 1][t.y]));
         }
         pq.pop().unwrap().val
     }
 
     pub fn kth_smallest_binary_search(matrix: Vec<Vec<i32>>, k: i32) -> i32 {
         let mut low = matrix[0][0];
-        let mut high = matrix[matrix.len()-1][matrix[0].len()-1];
+        let mut high = matrix[matrix.len() - 1][matrix[0].len() - 1];
         while low < high {
             let mid = low + (high - low) / 2;
             let mut count = 0;
@@ -87,8 +87,8 @@ struct Tuple {
 }
 
 impl Tuple {
-    pub  fn new(x: usize, y: usize, val: i32) -> Self{
-        Tuple{x: x, y: y, val: val}
+    pub fn new(x: usize, y: usize, val: i32) -> Self {
+        Tuple { x, y, val }
     }
 }
 
@@ -109,13 +109,19 @@ mod test {
     use super::*;
     #[test]
     fn kth_smallest() {
-        assert_eq!(Solution::kth_smallest(vec![vec![1,5,9], vec![10,11,13], vec![12,13,15]], 8), 13);
+        assert_eq!(
+            Solution::kth_smallest(vec![vec![1, 5, 9], vec![10, 11, 13], vec![12, 13, 15]], 8),
+            13
+        );
     }
 
     #[test]
     fn kth_smallest_binary_search() {
         // assert_eq!(Solution::kth_smallest_binary_search(vec![vec![1,5,9], vec![10,11,13], vec![12,13,15]], 8), 13);
         // assert_eq!(Solution::kth_smallest_binary_search(vec![vec![1,2], vec![1,3]], 3), 2);
-        assert_eq!(Solution::kth_smallest_binary_search(vec![vec![1,2], vec![3,3]], 2), 2);
+        assert_eq!(
+            Solution::kth_smallest_binary_search(vec![vec![1, 2], vec![3, 3]], 2),
+            2
+        );
     }
 }

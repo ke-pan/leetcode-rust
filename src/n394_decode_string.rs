@@ -11,32 +11,32 @@
  * Total Submissions: 213.2K
  * Testcase Example:  '"3[a]2[bc]"'
  *
- * 
+ *
  * Given an encoded string, return it's decoded string.
- * 
- * 
+ *
+ *
  * The encoding rule is: k[encoded_string], where the encoded_string inside the
  * square brackets is being repeated exactly k times. Note that k is guaranteed
  * to be a positive integer.
- * 
- * 
+ *
+ *
  * You may assume that the input string is always valid; No extra white spaces,
  * square brackets are well-formed, etc.
- * 
+ *
  * Furthermore, you may assume that the original data does not contain any
  * digits and that digits are only for those repeat numbers, k. For example,
  * there won't be input like 3a or 2[4].
- * 
- * 
+ *
+ *
  * Examples:
- * 
+ *
  * s = "3[a]2[bc]", return "aaabcbc".
  * s = "3[a2[c]]", return "accaccacc".
  * s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
- * 
- * 
+ *
+ *
  */
-struct Solution{}
+struct Solution {}
 
 impl Solution {
     pub fn decode_string(s: String) -> String {
@@ -49,8 +49,8 @@ impl Solution {
             if c.is_digit(10) {
                 num.push(c);
             } else if c == '[' {
-                let j = Solution::find_pair_bracket(&chars, i+1);
-                let _s = s.get(i+1..j).unwrap().to_string();
+                let j = Solution::find_pair_bracket(&chars, i + 1);
+                let _s = s.get(i + 1..j).unwrap().to_string();
                 let _s = Solution::decode_string(_s);
                 let _n = num.parse().unwrap();
                 for _ in 0.._n {
@@ -90,8 +90,17 @@ mod test {
 
     #[test]
     fn decode_string() {
-        assert_eq!(Solution::decode_string("3[a]2[bc]".to_string()), "aaabcbc".to_string());
-        assert_eq!(Solution::decode_string("2[abc]3[cd]ef".to_string()), "abcabccdcdcdef".to_string());
-        assert_eq!(Solution::decode_string("3[a2[c]]".to_string()), "accaccacc".to_string());
+        assert_eq!(
+            Solution::decode_string("3[a]2[bc]".to_string()),
+            "aaabcbc".to_string()
+        );
+        assert_eq!(
+            Solution::decode_string("2[abc]3[cd]ef".to_string()),
+            "abcabccdcdcdef".to_string()
+        );
+        assert_eq!(
+            Solution::decode_string("3[a2[c]]".to_string()),
+            "accaccacc".to_string()
+        );
     }
 }
