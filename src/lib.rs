@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 
+mod n215_kth_largest_element_in_an_array;
 mod n306_additive_number;
 mod n373_find_k_pairs_with_smallest_sums;
 mod n375_guess_number_higher_or_lower_ii;
